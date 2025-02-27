@@ -1,62 +1,58 @@
-# Research Paper Review and Q&A Bot
+# News Summarizer and QA Bot
 
 ## Overview
-This project extracts text from research papers in PDF format, summarizes key sections, and provides structured reviews. Additionally, it includes a Question-Answering (QA) bot that answers queries based on the extracted text.
+This project consists of two implementations:
+1. **Code Version:** A Python script that extracts text from news articles, generates a summary, and answers user questions based on the article content.
+2. **Streamlit Version:** A web-based interface that allows users to enter multiple news article URLs, view summaries in a tabular format, and ask questions interactively.
 
 ## Features
-- Extracts text from PDF research papers.
-- Summarizes the research paper using NLP techniques.
-- Identifies key sections such as **Introduction, Methodology, Results, and Conclusion**.
-- Extracts **keywords** from the text.
-- Provides an automated **review** of the paper.
-- Answers user queries based on the research paper content using a transformer-based model.
+- Extracts article content from URLs.
+- Generates summaries using a frequency-based approach.
+- Allows users to input multiple articles.
+- Provides a QA bot that answers questions based on specific articles.
+- Streamlit UI for easy interaction.
 
-## Dependencies
-Make sure you have the following Python libraries installed:
-```bash
-pip install PyPDF2 spacy gensim transformers
+## Requirements
+Ensure you have the following dependencies installed:
+```sh
+pip install newspaper3k pandas nltk transformers streamlit
 ```
-Additionally, download the required SpaCy model:
-```bash
-python -m spacy download en_core_web_sm
+Additionally, download the necessary NLTK resources:
+```python
+import nltk
+nltk.download('stopwords')
+nltk.download('punkt')
 ```
 
 ## Usage
-### 1. Extract and Review a Research Paper
-Run the following command to analyze a research paper:
-```bash
-python research_review.py
+### 1. Running the Code Version
+Execute the script using:
+```sh
+python article_review.py
 ```
-Make sure to replace `sample_paper.pdf` with your actual PDF file.
+This version will prompt for URLs and questions in a terminal environment.
 
-### 2. Ask Questions About the Paper
-Modify the `question` variable in the script to ask questions about the content:
-```python
-question = "What is the main contribution of this research?"
+### 2. Running the Streamlit Version (Local Deployment)
+Start the Streamlit app by running:
+```sh
+streamlit run streamlit.py
 ```
-Run the script to get an answer based on the extracted text.
+Then, open the provided local URL in your web browser to use the interactive UI.
 
-## Example Output
-```
-Research Paper Review
-=====================
+## How to Use the Streamlit App
+1. Enter multiple news article URLs (one per line) in the text area.
+2. Click **Add Articles** to fetch and summarize them.
+3. View the summaries in a table.
+4. Ask a question in the format: `Article X: Your question` (e.g., `Article 1: What is the main topic?`).
+5. Click **Get Answer** to receive an AI-generated response.
 
-Keywords: deep learning, image processing, classification
+## Notes
+- Fetching and summarizing articles may take some time; a spinner is displayed during processing.
+- Ensure a stable internet connection for retrieving article content.
 
-Summary:
-This paper explores the application of deep learning in image classification...
-
-Section-wise Analysis:
-- Introduction: Discusses the background and motivation...
-- Methodology: Explains the dataset and model used...
-- Results: Shows experimental findings and comparisons...
-- Conclusion: Summarizes key contributions and future work...
-
-Q: What is the main contribution of this research?
-A: The research introduces a novel deep learning model for improved accuracy...
-```
-
-## Contributions
-Feel free to fork this repository and submit pull requests for improvements!
+## Future Enhancements
+- Improve summary generation using advanced NLP models.
+- Add support for summarizing uploaded text files.
+- Extend the QA model to support multilingual queries.
 
 
