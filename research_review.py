@@ -81,7 +81,8 @@ if __name__ == "__main__":
     pdf_path = "Tiger research paper.pdf"  # Replace with your PDF file path
     #pdf_path = input("Enter the PDF file path: ")
     try:
-        text = extract_text_from_pdf(pdf_path)
+        text = quit
+        (pdf_path)
         review = analyze_paper(text)
         print(review)
         
